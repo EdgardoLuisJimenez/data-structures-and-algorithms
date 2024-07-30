@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 class ArrayUtil {
     private:
@@ -11,16 +12,17 @@ class ArrayUtil {
             }
             std::cout << "\n";
         }
-
         void arrayDemo() {
-            int myArray[5] = { }; // Default values
-            myArray[0] = 5;
-            myArray[1] = 1;
-            myArray[2] = 8;
-            myArray[3] = 2;
-            myArray[4] = 10;
-            printArray(myArray, 5);
-            myArray[5] = 26;
+            std::vector<int> arr = {0, 1, 3, 6, 8, 2, 4, 7};
+            std::cout << findMissingNumber(arr);
+        }
+        static int findMissingNumber(std::vector<int> arr){
+            int n = arr.size();
+            int sum = (n * (n + 1)) / 2;
+            for(auto num: arr){
+                sum = sum - num;
+            }
+            return sum;
         }
 };
 int main() {
